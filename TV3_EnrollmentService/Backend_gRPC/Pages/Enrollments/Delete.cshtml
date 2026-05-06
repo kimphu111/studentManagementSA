@@ -1,0 +1,28 @@
+@page "{id:int}"
+@model Enrollments.DeleteModel
+@{
+    ViewData["Title"] = "Delete Enrollment";
+}
+
+<h1>Delete Enrollment</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>EnrollmentRecord</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">Id</dt>
+        <dd class = "col-sm-10">@Model.EnrollmentRecord.Id</dd>
+        <dt class = "col-sm-2">StudentId</dt>
+        <dd class = "col-sm-10">@Model.EnrollmentRecord.StudentId</dd>
+        <dt class = "col-sm-2">CourseId</dt>
+        <dd class = "col-sm-10">@Model.EnrollmentRecord.CourseId</dd>
+        <dt class = "col-sm-2">EnrollmentDate</dt>
+        <dd class = "col-sm-10">@Model.EnrollmentRecord.EnrollmentDate.ToString("yyyy-MM-dd HH:mm")</dd>
+    </dl>
+    <form method="post">
+        <input type="hidden" asp-for="EnrollmentRecord.Id" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-page="Index">Back to List</a>
+    </form>
+</div>

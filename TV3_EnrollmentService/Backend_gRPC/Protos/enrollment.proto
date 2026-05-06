@@ -1,0 +1,27 @@
+﻿syntax = "proto3";
+option csharp_namespace = "EnrollmentService.gRPC";
+
+service Enrollment {
+  // 1. Unary: Đăng ký 1 môn học
+  rpc RegisterCourse (EnrollRequest) returns (EnrollResponse);
+
+  // 2. Server Streaming: Gửi tiến trình xử lý về cho Client
+  rpc StreamEnrollmentStatus (StudentIdRequest) returns (stream StatusUpdate);
+}
+
+message EnrollRequest {
+  string student_id = 1;
+  string course_id = 2;
+}
+
+message EnrollResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message StudentIdRequest { string student_id = 1; }
+
+message StatusUpdate {
+  string status = 1;
+  string timestamp = 2;
+}

@@ -1,0 +1,23 @@
+@page "{id:int}"
+@model Enrollments.DetailsModel
+@{
+    ViewData["Title"] = "Enrollment Details";
+}
+
+<h1>Enrollment Details</h1>
+<div>
+    <h4>EnrollmentRecord</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">Id</dt>
+        <dd class = "col-sm-10">@Model.EnrollmentRecord.Id</dd>
+        <dt class = "col-sm-2">StudentId</dt>
+        <dd class = "col-sm-10">@Model.EnrollmentRecord.StudentId</dd>
+        <dt class = "col-sm-2">CourseId</dt>
+        <dd class = "col-sm-10">@Model.EnrollmentRecord.CourseId</dd>
+        <dt class = "col-sm-2">EnrollmentDate</dt>
+        <dd class = "col-sm-10">@Model.EnrollmentRecord.EnrollmentDate.ToString("yyyy-MM-dd HH:mm")</dd>
+    </dl>
+    <a asp-page="Edit" asp-route-id="@Model.EnrollmentRecord.Id">Edit</a> |
+    <a asp-page="Index">Back to List</a>
+</div>

@@ -1,0 +1,24 @@
+@page
+@model Enrollments.CreateModel
+@{
+    ViewData["Title"] = "Create Enrollment";
+}
+
+<h1>Create Enrollment</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="EnrollmentRecord.StudentId"></label>
+        <input asp-for="EnrollmentRecord.StudentId" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="EnrollmentRecord.CourseId"></label>
+        <input asp-for="EnrollmentRecord.CourseId" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="EnrollmentRecord.EnrollmentDate"></label>
+        <input asp-for="EnrollmentRecord.EnrollmentDate" class="form-control" type="datetime-local" />
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-page="Index">Back to List</a>
+</form>
