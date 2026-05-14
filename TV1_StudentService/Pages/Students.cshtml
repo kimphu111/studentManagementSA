@@ -5,6 +5,14 @@
     Layout = null; 
 }
 
+@*
+    Trang Razor Page: Quản lý Sinh viên
+    - Hiển thị danh sách `Model.StudentList` (lấy từ DB)
+    - Form phía trên dùng để Thêm mới / Cập nhật `Model.InputStudent`
+    - Các form gửi tới handler trên PageModel: OnPostSave, OnPostDelete, DownloadLogStream
+    - Sử dụng `@Html.AntiForgeryToken()` để phòng CSRF
+*@
+
 <!DOCTYPE html>
 <html>
 <head>
