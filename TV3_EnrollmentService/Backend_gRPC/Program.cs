@@ -14,10 +14,30 @@ builder.Services.AddGrpc();
 // 3. Thêm Razor Pages
 builder.Services.AddRazorPages();
 
+builder.Services.AddAuthentication();
+builder.Services.AddAuthorization();
+
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+    // Cổng 5272 chỉ dành riêng cho Web / Razor Pages (HTTP/1.1)
+    options.ListenAnyIP(5272, listenOptions =>
+    {
+        listenOptions.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http1;
+    });
+
+    // Mở thêm một cổng mới (ví dụ 5273) CHỈ dành riêng cho gRPC (HTTP/2)
+    options.ListenAnyIP(5273, listenOptions =>
+    {
+        listenOptions.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http2;
+    });
+});
+
 var app = builder.Build();
 
 app.UseStaticFiles();
 app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
 
 // 4. Map gRPC
